@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+.hover-content {
+  padding: 10px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 350px;
+}
+
+[data-hover-wrapper] {
+  transition: opacity .3s, transform .3s;
+}
+
+.hover-content > img {
+  margin: auto;
+  max-width: 100%;
+}
+
+.hover-content > p {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+
+.info {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 13px;
+}
