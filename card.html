@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/rishabh-rajgarhia/bootstrap-4-utilities@1da4eddfb0c745438c7952e9e7e241291e732572/dist/bootstrap-4-utilities.min.css">
+	<title>Card Wikitooltip</title>
+</head>
+<style>
+	.text-justify {
+		text-align: justify;
+	}
+
+	@media (min-width: 576px) {
+		.wiki-card--vertical {
+			max-width: 488px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.wiki-card--vertical {
+			max-width: 384px;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.wiki-card--vertical {
+			max-width: 496px;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.wiki-card--vertical {
+			max-width: 600px;
+		}
+	}
+</style>
+
+<body>
+	<div class="container mt-5">
+		<!-- <div class="row">
+			<div class="col s12 m6">
+				<div class="card z-depth-5">
+					<div class="card-image">
+						<img class="card1-image"
+							src="data:image/jpeg;base64,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">
+						<span class="card-title">Card Title</span>
+					</div>
+					<div class="card-content">
+						<p class="text-justify card1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+							amet nam
+							vero
+							ut animi harum architecto, in cum commodi quos voluptatum reiciendis quo placeat optio. Ducimus
+							voluptatem
+							quis quasi consequatur! Perspiciatis aperiam laborum assumenda tempora, earum vitae inventore nesciunt.
+							Aliquam maxime suscipit labore voluptatum saepe ipsa quis possimus modi amet, et atque corrupti eligendi
+							obcaecati magni quam ducimus rem eos?</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s9">
+			</div>
+		</div> -->
+
+	</div>
+
+
+	<div class="m-5">
+		<div class="card horizontal z-depth-5 wiki-card--vertical">
+			<div class="card-image">
+				<img class="card2-image"
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Long_Zheng%2C_Dan_Rigsby%2C_Jeff_Atwood_%282979598012%29.jpg/220px-Long_Zheng%2C_Dan_Rigsby%2C_Jeff_Atwood_%282979598012%29.jpg">
+			</div>
+			<div class="card-stacked">
+				<div class="card-content">
+					<p class="text-justify card2">Jeff Atwood is an American software developer, author, blogger, and
+						entrepreneur. He writes the computer programming
+						blog Coding Horror. He co-founded the computer programming question-and-answer website Stack Overflow and
+						co-founded
+						Stack Exchange, which extends Stack Overflow's question-and-answer model to subjects other than programming.
+
+						Atwood's most recent project as of 2012 is the development of Discourse, an open source Internet discussion
+						platform.[3]
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+
+	// After Rendering card in DOM.
+	document.querySelector('.card2').style.height = document.querySelector('.card2-image').offsetHeight - 48 + 'px';
+	function ellipsizeTextBox(id) {
+		var el = document.querySelector(id);
+		var wordArray = el.innerHTML.split(' ');
+		while (el.scrollHeight > el.offsetHeight) {
+			wordArray.pop();
+			el.innerHTML = wordArray.join(' ') + '...';
+		}
+	}
+	ellipsizeTextBox(`.card2`);
+</script>
+
+</html>

@@ -1,65 +1,77 @@
+/**
+ * 
+ * 480 word per card-content.
+ * 
+ */
+
 // UI
-const IACNKPLVNV = document.getElementsByTagName("a");
+const links = document.getElementsByTagName("a");
 
-[...IACNKPLVNV].forEach(link => {
-  link.addEventListener("mouseover", WLSINMFKZD);
-  link.addEventListener("mousemove", TJCBAMLPUR);
-  link.addEventListener("mouseleave", ZBBAFUFSPN);
+
+function ellipsizeTextBox(height, id) {
+	document.querySelector('.card2').style.height = height - 48 + 'px';
+	var el = document.querySelector(id);
+	var wordArray = el.innerHTML.split(' ');
+	while (el.scrollHeight > el.offsetHeight) {
+		wordArray.pop();
+		el.innerHTML = wordArray.join(' ') + '...';
+	}
+}
+
+[...links].forEach(link => {
+	link.addEventListener("mouseover", handleMouseOver);
+	link.addEventListener("mousemove", handleMouseMove);
+	link.addEventListener("mouseleave", handleMouseLeave);
 });
-
-function ODDDVTJOKN(e) {
-  const ID = e.target.getAttribute("data-hover-id");
-  const wrapper = document.getElementById(ID);
-  let top = "";
-  if (
-    !(e.target.getBoundingClientRect().top + wrapper.offsetHeight > innerHeight)
-  ) {
-    top = `${e.clientY + e.target.offsetHeight}px`;
-  } else {
-    top = `${e.clientY - (wrapper.offsetHeight + e.target.offsetHeight)}px`;
-  }
-
-  return `position: fixed; left: ${e.clientX -
-    wrapper.offsetWidth / 2}px; top:${top}`;
+function handlePosition(e) {
+	const ID = e.target.getAttribute("data-hover-id");
+	const wrapper = document.getElementById(ID);
+	let top = "";
+	if (
+		!(e.target.getBoundingClientRect().top + wrapper.offsetHeight > innerHeight)
+	) {
+		top = `${e.clientY + e.target.offsetHeight}px`;
+	} else {
+		top = `${e.clientY - (wrapper.offsetHeight + e.target.offsetHeight)}px`;
+	}
+	return `position: fixed; left: ${e.clientX -
+		wrapper.offsetWidth / 2}px; top:${top}`;
 }
 
-function WLSINMFKZD(e) {
-  const hoverContent = e.target.getAttribute("data-hover-content");
-  const ID = Math.random()
-    .toString(36)
-    .substr(2, 9);
-  const wrapper = document.createElement("DIV");
-  e.target.setAttribute("data-hover-id", ID);
-  wrapper.setAttribute("data-hover-wrapper", "");
-  wrapper.setAttribute("id", ID);
-  wrapper.setAttribute("style", "opacity: 0; transform: scale(.8)");
-  wrapper.innerHTML = hoverContent;
-  document.body.append(wrapper);
-  wrapper.setAttribute("style", ODDDVTJOKN(e));
-  
-  // You can remove this line when you are using. I had added for the demo.
-  if (document.querySelector('.info')) document.querySelector('.info').remove();
-  
+function handleMouseOver(e) {
+	const hoverContent = e.target.getAttribute("data-hover-content");
+	const ID = Math.random()
+		.toString(36)
+		.substr(2, 9);
+	const wrapper = document.createElement("DIV");
+	e.target.setAttribute("data-hover-id", ID);
+	wrapper.setAttribute("data-hover-wrapper", "");
+	wrapper.setAttribute("id", ID);
+	wrapper.setAttribute("style", "opacity: 0; transform: scale(.8)");
+	wrapper.innerHTML = hoverContent;
+	document.body.append(wrapper);
+	wrapper.setAttribute("style", handlePosition(e));
 }
 
-function ZBBAFUFSPN(e) {
-  const ID = e.target.getAttribute("data-hover-id");
-  document.getElementById(ID).style.opacity = 0;
-  document.getElementById(ID).style.transform = "scale(.8)";
-  setTimeout(() => {
-    document.getElementById(ID).remove();
-  }, 150);
+function handleMouseLeave(e) {
+	const ID = e.target.getAttribute("data-hover-id");
+	document.getElementById(ID).style.opacity = 0;
+	document.getElementById(ID).style.transform = "scale(.8)";
+	setTimeout(() => {
+		document.getElementById(ID).remove();
+	}, 150);
 }
 
-function TJCBAMLPUR(e) {
-  const ID = e.target.getAttribute("data-hover-id");
-  const wrapper = document.getElementById(ID);
-  wrapper.setAttribute("style", ODDDVTJOKN(e));
+function handleMouseMove(e) {
+	const ID = e.target.getAttribute("data-hover-id");
+	const wrapper = document.getElementById(ID);
+	wrapper.setAttribute("style", handlePosition(e));
+
 }
 
 window.addEventListener('scroll', () => {
-  const wrapper = document.querySelector('[data-hover-wrapper]');
-  if (wrapper) wrapper.remove();
+	const wrapper = document.querySelector('[data-hover-wrapper]');
+	if (wrapper) wrapper.remove();
 });
 
 // Ajax
@@ -79,25 +91,54 @@ window.addEventListener('scroll', () => {
 
 const wikipediaTooltipUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
 
+const wikiVertical = (image, data) => `
+	<div class="card horizontal z-depth-4 wiki-card--vertical">
+		<div class="card-image">
+			<img class="card2-image"
+				src="${image}">
+		</div>
+		<div class="card-stacked">
+			<div class="card-content">
+				<p class="text-justify card2">${data}
+				</p>
+			</div>
+		</div>
+	</div>
+`
+const wikiHorizontal = (image, data) => `
+	<div class="card z-depth-4 wiki-card--horizontal">
+		<div class="card-image">
+			<img class="card1-image"
+				src="${image}">
+			<span class="card-title">Card Title</span>
+		</div>
+		<div class="card-content">
+			<p class="text-justify card1">${data}</p>
+		</div>
+	</div>`
+
+// const wikiHorizontal = (image, data) =
+
 const wikiTooltip = ele => {
-  const wikiSearchTerm = $(ele).attr('data-wiki');
-  $.ajax({
-    url: wikipediaTooltipUrl + wikiSearchTerm,
-    success: info => {
-      $.ajax({
-        url: info.api_urls.media,
-        success: data => {
-          let content = `
-            <div class='hover-content' title='${info.title.display}'>
-              <img src='${data.items[0].thumbnail.source}' />
-              <p>${info.extract_html}.</p>
-            </div>
-          `
-          $(ele).attr('data-hover-content', content)
-        }
-      })
-    }
-  })
+	const wikiSearchTerm = $(ele).attr('data-wiki');
+	$.ajax({
+		url: wikipediaTooltipUrl + wikiSearchTerm,
+		success: info => {
+			$.ajax({
+				url: info.api_urls.media,
+				success: data => {
+					let content = wikiHorizontal(data.items[0].thumbnail.source, info.extract_html)
+					$(ele).attr('data-hover-content', content)
+				}
+			})
+		}
+	})
 }
 
 $('[data-wiki]').each((i, ele) => wikiTooltip(ele));
+
+
+/* <div class='hover-content' title='${info.title.display}'>
+	<img src='${data.items[0].thumbnail.source}' />
+	<p>${info.extract_html}.</p>
+</div> */
