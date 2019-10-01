@@ -62,7 +62,7 @@
 	max-width: 22em;
 }
 .wiki-card--horizontal .card-image img{
-	height: auto;
+	max-height: 12em!important;
 	width: 22em!important;
 	background-size: cover;
 	background-position: center;
@@ -72,7 +72,7 @@
 	overflow: hidden;
 	position: relative; 
 	line-height: 1.4em;
-	max-height: 11em; 
+	max-height: 12em!important; 
 	text-align: justify;  
 	margin-right: -1em;
 	padding-right: 1em;
