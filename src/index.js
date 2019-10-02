@@ -1,3 +1,5 @@
+import "./styles.css";
+
 if(window.innerWidth >= 922){
 	const randomString = () => {
 		let char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZqwertyuiopasdfghjklzxcvbnm';
@@ -22,9 +24,7 @@ if(window.innerWidth >= 922){
 		const ID = e.target.getAttribute("data-hover-id");
 		document.getElementById(ID).style.opacity = 0;
 		document.getElementById(ID).style.transform = "scale(.8)";
-		setTimeout(() => {
-			document.getElementById(ID).remove();
-		}, 150);
+		setTimeout(() => document.getElementById(ID).remove(),  150);
 	}
 	
 	function handleMouseMove(e) {
@@ -145,6 +145,7 @@ if(window.innerWidth >= 922){
 	}
 	
 	document.querySelectorAll('[data-wikitooltip]').forEach(ele => { 
+		console.log(ele)
 		wikiTooltip(ele);
 		ele.addEventListener("mouseover", handleMouseOver);
 		ele.addEventListener("mousemove", handleMouseMove);

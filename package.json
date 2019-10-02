@@ -1,0 +1,21 @@
+{
+  "name": "wikitooltip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wikitooltip.js",
+  "keywords": [],
+  "author": "Adarsh Senghani",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm wikitooltip.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0"
+  }
+}
