@@ -1,6 +1,6 @@
 {
   "name": "wikitooltip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over particular element",
   "main": "wikitooltip.js",
   "keywords": [
