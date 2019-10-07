@@ -1,6 +1,6 @@
 # Wikitooltip
 
-Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over particular elem.
+Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over particular element.
 
 ![alt text](https://i.imgur.com/vvkXEz5.png "Title Demo")
 

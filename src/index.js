@@ -15,7 +15,7 @@ if(window.innerWidth >= 922){
 		const ID = e.target.getAttribute("data-hover-id");
 		const wrapper = document.getElementById(ID);
 		const {top, left, right, bottom} = e.target.getBoundingClientRect();
-		posLeft = wrapper.offsetWidth > window.innerWidth - right ? left - wrapper.offsetWidth : left;
+		posLeft = wrapper.offsetWidth > window.innerWidth - right ? right : left;
 		posTop = wrapper.offsetHeight > window.innerHeight - bottom ? top - wrapper.offsetHeight : bottom;
 		return `position: fixed; left: ${posLeft}px; top:${posTop}px`;
 	}
