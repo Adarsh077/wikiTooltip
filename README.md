@@ -12,7 +12,6 @@ Use CDN link provided by
 
 ```text
 https://cdn.jsdelivr.net/gh/Adarsh077/wikitooltip/wikitooltip.js
-https://cdn.jsdelivr.net/npm/wikitooltip@1.0.0/wikitooltip.js
 ```
 
 Use the package manager [npm](https://www.npmjs.com) to install Wikitooltip.
