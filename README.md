@@ -1,8 +1,8 @@
 # Wikitooltip
 
-Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over particular element.
+Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over an HTML element.
 
-![alt text](https://i.imgur.com/vvkXEz5.png "Title Demo")
+![Wikitooltip](https://i.imgur.com/1oqngKS.gif "Wikitooltip")
 
 ## Installation
 
@@ -25,7 +25,8 @@ npm install wikitooltip
 ```HTML
 Specify 'data-wikitooltip' attribute in an inline HTML element.
 
-Eg: <div data-wikitooltip="Stack_Overflow" style="display=inline">Stack Overflow</div> <!-- Element should be an inline element -->
+    <div data-wikitooltip="Stack_Overflow" style="display=inline">Stack Overflow</div>
+    <!-- Element should be an inline element -->
 ```
 
 ![alt text](https://i.imgur.com/7mcDJV4.png "Title Demo")

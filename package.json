@@ -1,7 +1,7 @@
 {
   "name": "wikitooltip",
   "version": "1.0.1",
-  "description": "Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over particular element",
+  "description": "Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over an HTML element",
   "main": "wikitooltip.js",
   "keywords": [
     "wikipedia data, tooltip, hover"
@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm wikitooltip.js",
-    "build-dev": "webpack -d --mode development",
+    "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production"
   },
   "dependencies": {},
