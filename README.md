@@ -1,6 +1,7 @@
 # Wikitooltip
 
 Wikitooltip is a Javascript library to display wikipedia data inside a materilized designed card in the form of tooltip when the user hovers over an HTML element.
+Tooltip is displayed only on screen >= 922px
 
 ![Wikitooltip](https://i.imgur.com/1oqngKS.gif "Wikitooltip")
 
