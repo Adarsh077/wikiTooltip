@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -8,30 +9,30 @@
 }
 
 .card-panel {
-  -webkit-transition: -webkit-box-shadow 0.25s;
-  transition: -webkit-box-shadow 0.25s;
-  transition: box-shadow 0.25s;
-  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
   padding: 24px;
-  margin: 0.5em 0 1em 0;
   border-radius: 2px;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  margin: 0.5em 0 1em 0;
   background-color: #fff;
+  transition: box-shadow 0.25s;
+  transition: -webkit-box-shadow 0.25s;
+  -webkit-transition: -webkit-box-shadow 0.25s;
+  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
+  -webkit-box-shadow: 0 2px 2px 0 #00000024, 0 1px 5px 0 #00000033,
+    0 3px 1px -2px #0000001f;
+  box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f,
+    0 1px 5px 0 #00000033;
 }
 
 .card {
-  font-family: "Roboto" !important;
   position: relative;
+  border-radius: 2px;
   margin: 0.5em 0 1em 0;
   background-color: #fff;
-  -webkit-transition: -webkit-box-shadow 0.25s;
-  transition: -webkit-box-shadow 0.25s;
   transition: box-shadow 0.25s;
+  font-family: "Roboto" !important;
+  transition: -webkit-box-shadow 0.25s;
+  -webkit-transition: -webkit-box-shadow 0.25s;
   transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
-  border-radius: 2px;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -39,9 +40,9 @@
 }
 
 .card.horizontal {
+  display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
 }
 
 .card.horizontal.small .card-image {
@@ -59,29 +60,29 @@
 }
 
 .card.horizontal .card-image img {
-  border-radius: 2px 0 0 2px;
-  max-width: 100%;
   width: auto;
+  max-width: 100%;
+  border-radius: 2px 0 0 2px;
 }
 
 .card.horizontal .card-stacked {
+  flex: 1;
+  -ms-flex: 1;
+  display: flex;
+  position: relative;
+  -webkit-box-flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  position: relative;
 }
 
 .card.horizontal .card-stacked .card-content {
+  flex-grow: 1;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .card .card-image {
@@ -89,14 +90,14 @@
 }
 
 .card .card-image img {
-  display: block;
-  border-radius: 2px 2px 0 0;
-  position: relative;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
   bottom: 0;
   width: 100%;
+  display: block;
+  position: relative;
+  border-radius: 2px 2px 0 0;
 }
 
 .card .card-content {
@@ -110,8 +111,8 @@
 
 /* 16dp elevation */
 .z-depth-4 {
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
-    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 24px 2px #00000024, 0 6px 30px 5px #0000001f,
+    0 8px 10px -7px #00000033;
 }
 
 .text-justify {
@@ -141,10 +142,10 @@
 .wiki-card--horizontal .card-content p {
   overflow: hidden;
   position: relative;
-  line-height: 1.4em;
-  text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
+  line-height: 1.4em;
+  text-align: justify;
 }
 .wiki-card--vertical .card-stacked .card-content p {
   max-height: 11em;
@@ -152,28 +153,28 @@
 
 .wiki-card--vertical .card-stacked .card-content p:before,
 .wiki-card--horizontal .card-content p:before {
-  content: "...";
-  position: absolute;
   right: 0;
   bottom: 0;
+  content: "...";
+  position: absolute;
 }
 
 .wiki-card--vertical .card-stacked .card-content p:after,
 .wiki-card--horizontal .card-content p:after {
   content: "";
-  position: absolute;
   right: 0;
   width: 1em;
   height: 1em;
   margin-top: 0.2em;
+  position: absolute;
 }
 
 .wiki-card--horizontal {
   max-width: 22em;
 }
 .wiki-card--horizontal .card-image img {
-  max-height: 12em !important;
   width: 22em !important;
+  max-height: 12em !important;
 }
 
 .wiki-card--horizontal .card-content p {

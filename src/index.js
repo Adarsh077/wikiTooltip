@@ -2,59 +2,46 @@ import "./styles.css";
 import {
   card,
   ajax,
-  wikiVertical,
-  wikiHorizontal,
+  Vertical,
+  Horizontal,
   handleMouseOver,
   handleMouseMove,
   handleMouseLeave
-} from "./modules/UI.js";
+} from "./modules";
 
-if (window.innerWidth >= 922) {
-  window.addEventListener("scroll", () => {
-    const wrapper = document.querySelector("[data-hover-wrapper]");
-    if (wrapper) wrapper.remove();
-  });
+const baseUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 
-  const wikipediaTooltipUrl =
-    "https://en.wikipedia.org/api/rest_v1/page/summary/";
+// Remove Tooltip on Scroll
+window.addEventListener("scroll", () => {
+  const wrapper = document.querySelector("[data-hover-wrapper]");
+  if (wrapper) wrapper.remove();
+});
 
-  const fetchData = ele => {
-    const wikiSearchTerm = ele.getAttribute("data-wikitooltip");
-    ajax(wikipediaTooltipUrl + wikiSearchTerm).then(info => {
-      ajax(info.api_urls.media).then(data => {
-        if (data.items.length > 0) {
-          var img = new Image();
-          let src = data.items[0].thumbnail.source;
-          img.src = src;
-          img.addEventListener(
-            "load",
-            () => {
-              ele.setAttribute(
-                "data-hover-content",
-                img.height > img.width
-                  ? wikiVertical(
-                      data.items[0].thumbnail.source,
-                      info.extract_html
-                    )
-                  : wikiHorizontal(
-                      data.items[0].thumbnail.source,
-                      info.extract_html
-                    )
-              );
-            },
-            false
-          );
-        } else {
-          ele.setAttribute("data-hover-content", card(info.extract_html));
-        }
-      });
-    });
-  };
+const renderCard = async ele => {
+  const wikiSearchTerm = ele.getAttribute("data-wikitooltip");
 
-  document.querySelectorAll("[data-wikitooltip]").forEach(ele => {
-    fetchData(ele);
-    ele.addEventListener("mouseover", handleMouseOver);
-    ele.addEventListener("mousemove", handleMouseMove);
-    ele.addEventListener("mouseleave", handleMouseLeave);
-  });
-}
+  const info = await ajax(baseUrl + wikiSearchTerm);
+  let media = await ajax(info.api_urls.media);
+  media = media.items[0].thumbnail.source;
+
+  if (media) {
+    const img = new Image();
+    img.src = media;
+    const tooltip =
+      img.height > img.width
+        ? Vertical(media, info.extract_html)
+        : Horizontal(media, info.extract_html);
+    img.addEventListener("load", () =>
+      ele.setAttribute("data-hover-content", tooltip, false)
+    );
+  } else {
+    ele.setAttribute("data-hover-content", card(info.extract_html));
+  }
+};
+
+document.querySelectorAll("[data-wikitooltip]").forEach(ele => {
+  renderCard(ele);
+  ele.addEventListener("mouseover", handleMouseOver);
+  ele.addEventListener("mousemove", handleMouseMove);
+  ele.addEventListener("mouseleave", handleMouseLeave);
+});
