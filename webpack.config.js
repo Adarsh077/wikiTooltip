@@ -1,22 +1,19 @@
-const path = require('path');
+const path = require("path");
 
 const config = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname),
-    filename: 'wikitooltip.js'
+    filename: "index.js"
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ["style-loader", "css-loader"]
       }
     ]
   }
-}
+};
 
 module.exports = config;

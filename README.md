@@ -22,6 +22,13 @@ npm install wikitooltip
 
 ## Usage
 
+```javascript
+// If installed via npm
+import "wikitooltip";
+        OR
+require("wikitooltip");
+```
+
 ```HTML
 Specify 'data-wikitooltip' attribute in an inline HTML element.
 
